@@ -16,7 +16,8 @@ public class GetsqlApplication implements CommandLineRunner {
 		System.out.println("hello, world");
 		System.out.println(this.userService.getAllUsers());
 		System.out.println("-------------------------");
-		System.out.println(userService.findUserByName("john"));
+		//System.out.println(userService.findUserByName("jo'hn"));
+		System.out.println(userService.findUserByName2("jo'hn"));
 //		if (args.length > 0 && args[0].equals("exitcode")) {
 //			throw new ExitException();
 //		}

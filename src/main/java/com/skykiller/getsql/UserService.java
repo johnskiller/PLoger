@@ -21,6 +21,10 @@ public class UserService {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+//    @Autowired
+//    private WrapedJdbcTemplate wrapedJdbcTemplate;
+
+
     private static User mapRow(ResultSet result, int rowNum) {
         User contact = new User();
         try {
@@ -52,5 +56,17 @@ public class UserService {
 
         return namedParameterJdbcTemplate.query(sql,
                 paramSource, new BeanPropertyRowMapper(User.class));
+    }
+
+    public List<User> findUserByName2(String name) {
+        //return null; //jdbcTemplate.queryForList("select * from test_users");
+        String sql = "select * from test_users where name=?";
+
+
+
+        //JdbcTemplate & ラムダ式 & 三項演算子
+        return jdbcTemplate.query(sql, UserService::mapRow, new Object[]{new String(name)});
+
+
     }
 }
